@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Commerce</title>
+<style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+    h1 { text-align: center; }
+    .produit { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; width: 200px; background: #fff; }
+    .produit button { background: #25D366; color: #fff; border: none; padding: 10px; cursor: pointer; width: 100%; }
+    .panier { margin-top: 20px; background: #fff; padding: 10px; border: 1px solid #ccc; }
+    input { width: 100%; padding: 5px; margin: 5px 0; }
+    .commander { background: #128C7E; color: #fff; padding: 10px; border: none; cursor: pointer; width: 100%; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<h1>Bienvenue sur Mon Commerce</h1>
+
+<div id="produits">
+    <div class="produit">
+        <h3>Produit A</h3>
+        <p>Prix: 5000 XOF</p>
+        <button onclick="ajouterAuPanier('Produit A', 5000)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <h3>Produit B</h3>
+        <p>Prix: 8000 XOF</p>
+        <button onclick="ajouterAuPanier('Produit B', 8000)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <h3>Produit C</h3>
+        <p>Prix: 12000 XOF</p>
+        <button onclick="ajouterAuPanier('Produit C', 12000)">Ajouter au panier</button>
+    </div>
+</div>
+
+<div class="panier">
+    <h2>Panier</h2>
+    <ul id="listePanier"></ul>
+    <p>Total: <span id="total">0</span> XOF</p>
+</div>
+
+<h2>Vos coordonnées</h2>
+<input type="text" id="nom" placeholder="Nom complet" required>
+<input type="text" id="telephone" placeholder="Téléphone" required>
+<input type="text" id="adresse" placeholder="Adresse" required>
+<button class="commander" onclick="commander()">Commander via WhatsApp</button>
+
+<script>
+let panier = [];
+let total = 0;
+
+function ajouterAuPanier(nom, prix) {
+    panier.push({ nom, prix });
+    total += prix;
+    afficherPanier();
+}
+
+function afficherPanier() {
+    const liste = document.getElementById('listePanier');
+    liste.innerHTML = '';
+    panier.forEach((item, index) => {
+        liste.innerHTML += `<li>${item.nom} - ${item.prix} XOF</li>`;
+    });
+    document.getElementById('total').innerText = total;
+}
+
+function commander() {
+    const nomClient = document.getElementById('nom').value;
+    const telClient = document.getElementById('telephone').value;
+    const adresseClient = document.getElementById('adresse').value;
+
+    if (!nomClient || !telClient || !adresseClient) {
+        alert('Veuillez remplir toutes vos coordonnées.');
+        return;
+    }
+
+    if (panier.length === 0) {
+        alert('Votre panier est vide.');
+        return;
+    }
+
+    let message = `Bonjour, je souhaite commander:\n`;
+    panier.forEach(item => {
+        message += `- ${item.nom} : ${item.prix} XOF\n`;
+    });
+    message += `Total: ${total} XOF\n\n`;
+    message += `Nom: ${nomClient}\nTéléphone: ${telClient}\nAdresse: ${adresseClient}`;
+
+    // Encode le message pour l'URL
+    const urlWhatsApp = `https://wa.me/22890114140?text=${encodeURIComponent(message)}`;
+    window.open(urlWhatsApp, '_blank');
+}
+</script>
+
+</body>
+</html>
