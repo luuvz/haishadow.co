@@ -1,4 +1,3 @@
-// Liste des produits
 const produits = [
     { nom: "Produit A", prix: 5000, image: "https://via.placeholder.com/220x150?text=Produit+A" },
     { nom: "Produit B", prix: 8000, image: "https://via.placeholder.com/220x150?text=Produit+B" },
