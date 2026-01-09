@@ -1,7 +1,7 @@
 const produits = [
-    { nom: "Produit A", prix: 5000, image: "https://via.placeholder.com/220x150?text=Produit+A" },
-    { nom: "Produit B", prix: 8000, image: "https://via.placeholder.com/220x150?text=Produit+B" },
-    { nom: "Produit C", prix: 12000, image: "https://via.placeholder.com/220x150?text=Produit+C" },
+    { nom: "Produit A", prix: 7000, image: "https://via.placeholder.com/220x150?text=Produit+A" },
+    { nom: "Produit B", prix: 4000, image: "https://via.placeholder.com/220x150?text=Produit+B" },
+    { nom: "Produit C", prix: 9000, image: "https://via.placeholder.com/220x150?text=Produit+C" },
 ];
 
 // Panier
