@@ -36,73 +36,7 @@
     <button onclick="commander()">Commander via WhatsApp</button>
 </section>
 
-<!-- SCRIPTS -->
-<script src="script.js"></script>
-<script type="module" src="auth.js"></script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCIUwzYeOx8CkC7rZrV4d8zFUe9abvJjFs",
-    authDomain: "haishadow-34bfe.firebaseapp.com",
-    projectId: "haishadow-34bfe",
-    storageBucket: "haishadow-34bfe.firebasestorage.app",
-    messagingSenderId: "1003443738590",
-    appId: "1:1003443738590:web:8b042093b94515a9be6f4f",
-    measurementId: "G-5SKMPP93DZ"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script><script type="module">
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-function inscrire() {
-    const email = document.getElementById("emailInscription").value;
-    const password = document.getElementById("passwordInscription").value;
-
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        sendEmailVerification(userCredential.user);
-        alert("Un code de vérification a été envoyé sur votre email");
-    })
-    .catch((error) => {
-        alert(error.message);
-    });
-}
-
-window.inscrire = inscrire;
-</script><script type="module">
-import { signInWithEmailAndPassword } from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-function connecter() {
-    const email = document.getElementById("emailConnexion").value;
-    const password = document.getElementById("passwordConnexion").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        if (!userCredential.user.emailVerified) {
-            alert("Veuillez vérifier votre email avec le code OTP");
-            return;
-        }
-        alert("Connexion réussie");
-    })
-    .catch((error) => {
-        alert("Email ou mot de passe incorrect");
-    });
-}
-
-window.connecter = connecter;
-</script>
+  </script>
 
 
 </body>
